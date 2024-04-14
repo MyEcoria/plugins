@@ -28,7 +28,7 @@ class Share {
   ///
   /// May throw [PlatformException] or [FormatException]
   /// from [MethodChannel].
-  static Future<void> share(String text, {Rect sharePositionOrigin}) {
+  static Future<void> share(String text, {Rect? sharePositionOrigin}) {
     assert(text != null);
     assert(text.isNotEmpty);
     final Map<String, dynamic> params = <String, dynamic>{
@@ -58,10 +58,10 @@ class Share {
   /// May throw [PlatformException] or [FormatException]
   /// from [MethodChannel].
   static Future<void> shareFile(File file,
-      {String mimeType,
-      String subject,
-      String text,
-      Rect sharePositionOrigin}) {
+      {String? mimeType,
+      String? subject,
+      String? text,
+      Rect? sharePositionOrigin}) {
     assert(file != null);
     assert(file.existsSync());
     final Map<String, dynamic> params = <String, dynamic>{
@@ -82,7 +82,7 @@ class Share {
     return channel.invokeMethod('shareFile', params);
   }
 
-  static String _mimeTypeForFile(File file) {
+  static String? _mimeTypeForFile(File file) {
     assert(file != null);
     final String path = file.path;
 
